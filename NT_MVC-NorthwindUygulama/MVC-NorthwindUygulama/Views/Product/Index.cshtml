@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+@using MVC_NorthwindUygulama.Models
+@model List<Product>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Ürün Adı</th>
+                <th>Fiyat</th>
+                <th>Stok</th>
+                <th>Kategori ID</th>
+                <th>Tedarikçi ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product prd in Model)
+            {
+                <tr>
+                    <td>@prd.ProductName</td>
+                    <td>@prd.UnitPrice</td>
+                    <td>@prd.UnitsInStock</td>
+                    <td>@prd.Category.CategoryName</td>
+                    <td>@prd.Supplier.CompanyName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Kategori Adı</th>
+                <th>Kategori Tanımı</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Category cat in ViewBag.categoryList)
+            {
+                <tr>
+                    <td>@cat.CategoryName</td>
+                    <td>@cat.Description</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+</body>
+</html>

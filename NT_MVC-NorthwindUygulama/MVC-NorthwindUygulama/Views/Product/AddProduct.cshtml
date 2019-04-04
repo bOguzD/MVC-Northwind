@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+@using MVC_NorthwindUygulama.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ürün Ekle</title>
+</head>
+<body>
+    <form action="/Product/AddProduct" method="post">
+        Ürün Adı: <input type="text" name="ProductName"/>
+        <br />
+        <br />
+        Fiyat: <input type="number" name="UnitPrice" />
+        <br />
+        <br />
+        Stok: <input type="number" name="UnitsInStock" />
+        <br />
+        <br />
+        Kategori:
+        <select name="CategoryID">
+            @* Combobox için bunu kullanıyoruz *@
+            @foreach (Category cat in ViewBag.categoryList)
+            {
+                <option value="@cat.CategoryID">@cat.CategoryName</option>
+            }
+        </select>
+        <br />
+        <br />
+        Tedarikçi:
+        <select name="SupplierID">
+            @foreach (Supplier sup in ViewBag.supplierList)
+            {
+                <option value="@sup.SupplierID">@sup.CompanyName</option>
+            }
+        </select>
+        <br />
+        <br />
+        <a href="/Product/Index">İptal</a>
+        <input type="submit" value="Ekle" />
+    </form>
+</body>
+</html>
